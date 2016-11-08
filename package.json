@@ -10,9 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "compass": "^0.1.1",
     "express": "^4.14.0",
     "express-handlebars": "*",
-    "lodash": "^4.16.6"
+    "lodash": "^4.16.6",
+    "node-sass": "^3.11.2"
   },
   "devDependencies": {
     "mocha": "^3.1.2"
