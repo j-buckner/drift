@@ -1,4 +1,7 @@
-// Landing Page
+// Imports
+@import "bourbon/bourbon";
+
+// Home Page
 /* make keyframes that tell the start state and the end state of our object */
 @-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 @-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
@@ -25,47 +28,96 @@
   animation-delay: 0.3s;
 }
 
-.carousel{
-  height:100%;
-}
-
-.carousel-div.one{
-  background-image: url('../img/jk_splash.jpg');
-  background-size: 100% auto;
-  background-repeat: no-repeat;
-  width: 100%;
-  @extend .fade-in;
-  @extend .fade-in.one;
-}
-
-.carousel-div.two{
-  background-image: url('../img/jk_splash2.jpg');
-  background-size:100% auto;
-  background-repeat: no-repeat;
-}
-
-.carousel-div.three{
-  background-image: url('../img/jk_splash3.jpg');
-  background-size:100% auto;
-  background-repeat: no-repeat;
-}
-
-.carousel-div.four{
-  background-image: url('../img/jk_splash4.jpg');
-  background-size:100% auto;
-  background-repeat: no-repeat;
-}
-
-.carousel-div.five{
-  background-image: url('../img/jk_splash5.jpg');
-  background-size:100% auto;
-  background-repeat: no-repeat;
-}
-
 h1 {
   font-family: 'Raleway', sans-serif;
-  color: rgba(91, 139, 199, 1);  
-  text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
-               0px 8px 13px rgba(0,0,0,0.1),
-               0px 18px 23px rgba(0,0,0,0.1);
+  color: rgba(0, 0, 0, 1);  
 }
+
+/*----------------------------------------------   
+--Banner
+-----------------------------------------------  */
+.sect-banner{
+ display: table;
+ width: 100%;
+ margin: 0 auto;
+ text-align: center;
+
+ /*-- Full Height --*/
+ height: 100vh;
+ color: rgba(255,255,255,0.9);
+
+ /*-- Create an Overlay --*/
+ &:after{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+ }
+
+ /*-- Vertically center --*/
+ .v-center{
+  display: table-cell;
+  position: relative;
+  z-index: 1;
+  padding: 0 5%;
+ }
+}
+
+/*----------------------------------------------   
+--Keyframes
+-----------------------------------------------  */
+@include keyframes(fade-out) {
+ 33%{
+  opacity: 1
+ }
+ 66%{
+ opacity: 0
+ }
+}
+
+/*----------------------------------------------   
+--List for images, sm and large
+-----------------------------------------------  */
+ul.kf-slider{
+ li{  
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position:  50%;
+  z-index: 0;
+  opacity: 0;
+  /*-- Add animation --*/ 
+  @include animation(fade-out 12s infinite both);
+  /*-- Image 1: small --*/ 
+  background-image: url(../img/home/mobile/splash1_mobile.jpg);
+  @media (min-width: 32em){
+   /*-- Image 1: large --*/ 
+   background-image: url(../img/home/desktop/splash1_desktop.jpg);
+  }
+ }
+ /*-- Image 2 --*/ 
+ li:nth-child(2){
+  background-image: url(../img/home/mobile/splash2_mobile.jpg);
+  /*-- Animation delay: 3s --*/ 
+  @include animation-delay(4s);
+  @media (min-width: 32em){
+   background-image: url(../img/home/desktop/splash2_desktop.jpg);
+  }
+ }
+ /*-- Image 3 --*/ 
+ li:nth-child(3){
+  background-image: url(../img/home/mobile/splash3_mobile.jpg);
+  /* Animation delay: 6s */  
+  @include animation-delay(8s);
+  @media (min-width: 32em){
+   background-image: url(../img/home/desktop/splash3_desktop.jpg);
+  }
+ }
+}
+
