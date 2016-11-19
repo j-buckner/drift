@@ -23,8 +23,8 @@
     opacity: 1;
   }
 }
-/* line 6, ../../sass/home.scss */
-.fade-in {
+/* line 7, ../../sass/home.scss */
+.fade-in, .carousel-div.one {
   opacity: 0;
   /* make things invisible upon start */
   -webkit-animation: fadeIn ease-in 1;
@@ -40,9 +40,57 @@
   animation-duration: 1s;
 }
 
-/* line 21, ../../sass/home.scss */
-.fade-in.one {
+/* line 22, ../../sass/home.scss */
+.fade-in.one, .carousel-div.one {
   -webkit-animation-delay: 0.3s;
   -moz-animation-delay: 0.3s;
   animation-delay: 0.3s;
+}
+
+/* line 28, ../../sass/home.scss */
+.carousel {
+  height: 100%;
+}
+
+/* line 32, ../../sass/home.scss */
+.carousel-div.one {
+  background-image: url("../img/jk_splash.jpg");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
+/* line 41, ../../sass/home.scss */
+.carousel-div.two {
+  background-image: url("../img/jk_splash2.jpg");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+}
+
+/* line 47, ../../sass/home.scss */
+.carousel-div.three {
+  background-image: url("../img/jk_splash3.jpg");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+}
+
+/* line 53, ../../sass/home.scss */
+.carousel-div.four {
+  background-image: url("../img/jk_splash4.jpg");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+}
+
+/* line 59, ../../sass/home.scss */
+.carousel-div.five {
+  background-image: url("../img/jk_splash5.jpg");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+}
+
+/* line 65, ../../sass/home.scss */
+h1 {
+  font-family: 'Raleway', sans-serif;
+  color: #5b8bc7;
+  text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1), 0px 18px 23px rgba(0, 0, 0, 0.1);
 }
