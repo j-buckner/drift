@@ -95,28 +95,28 @@ ul.kf-slider{
   /*-- Add animation --*/ 
   @include animation(fade-out 12s infinite both);
   /*-- Image 1: small --*/ 
-  background-image: url(../img/home/mobile/splash1_mobile.jpg);
+  background-image: url(../img/home/mobile/splash1_edit_mobile.jpg);
   @media (min-width: 32em){
    /*-- Image 1: large --*/ 
-   background-image: url(../img/home/desktop/splash1_desktop.jpg);
+   background-image: url(../img/home/desktop/splash1_edit_desktop.jpg);
   }
  }
  /*-- Image 2 --*/ 
  li:nth-child(2){
-  background-image: url(../img/home/mobile/splash2_mobile.jpg);
+  background-image: url(../img/home/mobile/splash2_edit_mobile.jpg);
   /*-- Animation delay: 3s --*/ 
   @include animation-delay(4s);
   @media (min-width: 32em){
-   background-image: url(../img/home/desktop/splash2_desktop.jpg);
+   background-image: url(../img/home/desktop/splash2_edit_desktop.jpg);
   }
  }
  /*-- Image 3 --*/ 
  li:nth-child(3){
-  background-image: url(../img/home/mobile/splash3_mobile.jpg);
+  background-image: url(../img/home/mobile/splash3_edit_mobile.jpg);
   /* Animation delay: 6s */  
   @include animation-delay(8s);
   @media (min-width: 32em){
-   background-image: url(../img/home/desktop/splash3_desktop.jpg);
+   background-image: url(../img/home/desktop/splash3_edit_desktop.jpg);
   }
  }
 }

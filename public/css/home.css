@@ -137,18 +137,18 @@ ul.kf-slider li {
   -moz-animation: fade-out 12s infinite both;
   animation: fade-out 12s infinite both;
   /*-- Image 1: small --*/
-  background-image: url(../img/home/mobile/splash1_mobile.jpg);
+  background-image: url(../img/home/mobile/splash1_edit_mobile.jpg);
 }
 @media (min-width: 32em) {
   /* line 85, ../../sass/home.scss */
   ul.kf-slider li {
     /*-- Image 1: large --*/
-    background-image: url(../img/home/desktop/splash1_desktop.jpg);
+    background-image: url(../img/home/desktop/splash1_edit_desktop.jpg);
   }
 }
 /* line 105, ../../sass/home.scss */
 ul.kf-slider li:nth-child(2) {
-  background-image: url(../img/home/mobile/splash2_mobile.jpg);
+  background-image: url(../img/home/mobile/splash2_edit_mobile.jpg);
   /*-- Animation delay: 3s --*/
   -webkit-animation-delay: 4s;
   -moz-animation-delay: 4s;
@@ -157,12 +157,12 @@ ul.kf-slider li:nth-child(2) {
 @media (min-width: 32em) {
   /* line 105, ../../sass/home.scss */
   ul.kf-slider li:nth-child(2) {
-    background-image: url(../img/home/desktop/splash2_desktop.jpg);
+    background-image: url(../img/home/desktop/splash2_edit_desktop.jpg);
   }
 }
 /* line 114, ../../sass/home.scss */
 ul.kf-slider li:nth-child(3) {
-  background-image: url(../img/home/mobile/splash3_mobile.jpg);
+  background-image: url(../img/home/mobile/splash3_edit_mobile.jpg);
   /* Animation delay: 6s */
   -webkit-animation-delay: 8s;
   -moz-animation-delay: 8s;
@@ -171,6 +171,6 @@ ul.kf-slider li:nth-child(3) {
 @media (min-width: 32em) {
   /* line 114, ../../sass/home.scss */
   ul.kf-slider li:nth-child(3) {
-    background-image: url(../img/home/desktop/splash3_desktop.jpg);
+    background-image: url(../img/home/desktop/splash3_edit_desktop.jpg);
   }
 }
