@@ -143,7 +143,7 @@ ul.kf-slider li {
   /* line 85, ../../sass/home.scss */
   ul.kf-slider li {
     /*-- Image 1: large --*/
-    background-image: url(../img/home/desktop/splash1_edit_desktop.jpg);
+    background-image: url(../img/home/desktop/splash1_desktop.jpg);
   }
 }
 /* line 105, ../../sass/home.scss */
@@ -157,7 +157,7 @@ ul.kf-slider li:nth-child(2) {
 @media (min-width: 32em) {
   /* line 105, ../../sass/home.scss */
   ul.kf-slider li:nth-child(2) {
-    background-image: url(../img/home/desktop/splash2_edit_desktop.jpg);
+    background-image: url(../img/home/desktop/splash2_desktop.jpg);
   }
 }
 /* line 114, ../../sass/home.scss */
@@ -171,6 +171,6 @@ ul.kf-slider li:nth-child(3) {
 @media (min-width: 32em) {
   /* line 114, ../../sass/home.scss */
   ul.kf-slider li:nth-child(3) {
-    background-image: url(../img/home/desktop/splash3_edit_desktop.jpg);
+    background-image: url(../img/home/desktop/splash3_desktop.jpg);
   }
 }
