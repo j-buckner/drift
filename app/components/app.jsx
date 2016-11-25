@@ -99,7 +99,7 @@ class Map extends React.Component {
     return (
       <div>
         <input id="pac-input" className="controls" type="text" placeholder="Search Box"/>
-        <div ref="map" style={mapStyle} ref="map">I should be a map!</div>
+        <div ref="map" style={mapStyle} ref="map"></div>
       </div>
     );
   }
