@@ -46,14 +46,176 @@
 
 	'use strict';
 
-	var _app = __webpack_require__(179);
+	var _app = __webpack_require__(1);
 
 	var _app2 = _interopRequireDefault(_app);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 1 */,
+/* 1 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(33);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var ARC_DE_TRIOMPHE_POSITION = {
+	  lat: 48.873947,
+	  lng: 2.295038
+	};
+
+	var EIFFEL_TOWER_POSITION = {
+	  lat: 48.858608,
+	  lng: 2.294471
+	};
+
+	var App = function (_React$Component) {
+	  _inherits(App, _React$Component);
+
+	  function App() {
+	    _classCallCheck(this, App);
+
+	    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+	  }
+
+	  _createClass(App, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(Map, null)
+	      );
+	    }
+	  }]);
+
+	  return App;
+	}(_react2.default.Component);
+
+	var Map = function (_React$Component2) {
+	  _inherits(Map, _React$Component2);
+
+	  function Map() {
+	    _classCallCheck(this, Map);
+
+	    return _possibleConstructorReturn(this, (Map.__proto__ || Object.getPrototypeOf(Map)).apply(this, arguments));
+	  }
+
+	  _createClass(Map, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.map = new google.maps.Map(this.refs.map, {
+	        center: EIFFEL_TOWER_POSITION,
+	        zoom: 16
+	      });
+	      var map = this.map;
+	      // Create the search box and link it to the UI element.
+	      var input = document.getElementById('pac-input');
+	      var searchBox = new google.maps.places.SearchBox(input);
+	      map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+	      // Bias the SearchBox results towards current map's viewport.
+	      map.addListener('bounds_changed', function () {
+	        searchBox.setBounds(map.getBounds());
+	      });
+
+	      var markers = [];
+	      // Listen for the event fired when the user selects a prediction and retrieve
+	      // more details for that place.
+	      searchBox.addListener('places_changed', function () {
+	        var places = searchBox.getPlaces();
+
+	        if (places.length == 0) {
+	          return;
+	        }
+
+	        // Clear out the old markers.
+	        markers.forEach(function (marker) {
+	          marker.setMap(null);
+	        });
+	        markers = [];
+
+	        // For each place, get the icon, name and location.
+	        var bounds = new google.maps.LatLngBounds();
+	        places.forEach(function (place) {
+	          if (!place.geometry) {
+	            console.log("Returned place contains no geometry");
+	            return;
+	          }
+	          var icon = {
+	            url: place.icon,
+	            size: new google.maps.Size(71, 71),
+	            origin: new google.maps.Point(0, 0),
+	            anchor: new google.maps.Point(17, 34),
+	            scaledSize: new google.maps.Size(25, 25)
+	          };
+
+	          // Create a marker for each place.
+	          markers.push(new google.maps.Marker({
+	            map: map,
+	            icon: icon,
+	            title: place.name,
+	            position: place.geometry.location
+	          }));
+
+	          if (place.geometry.viewport) {
+	            // Only geocodes have viewport.
+	            bounds.union(place.geometry.viewport);
+	          } else {
+	            bounds.extend(place.geometry.location);
+	          }
+	        });
+	        map.fitBounds(bounds);
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var mapStyle = {
+	        width: '100%',
+	        margin: '0 auto',
+	        height: '100vh',
+	        border: '1px solid black'
+	      };
+
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement('input', { id: 'pac-input', className: 'controls', type: 'text', placeholder: 'Search Box' }),
+	        _react2.default.createElement(
+	          'div',
+	          _defineProperty({ ref: 'map', style: mapStyle }, 'ref', 'map'),
+	          'I should be a map!'
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Map;
+	}(_react2.default.Component);
+
+	_reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('app'));
+
+/***/ },
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -21439,105 +21601,6 @@
 
 	module.exports = ReactDOMInvalidARIAHook;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
-
-/***/ },
-/* 179 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactDom = __webpack_require__(33);
-
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var ARC_DE_TRIOMPHE_POSITION = {
-	  lat: 48.873947,
-	  lng: 2.295038
-	};
-
-	var EIFFEL_TOWER_POSITION = {
-	  lat: 48.858608,
-	  lng: 2.294471
-	};
-
-	var App = function (_React$Component) {
-	  _inherits(App, _React$Component);
-
-	  function App() {
-	    _classCallCheck(this, App);
-
-	    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
-	  }
-
-	  _createClass(App, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(Map, null)
-	      );
-	    }
-	  }]);
-
-	  return App;
-	}(_react2.default.Component);
-
-	var Map = function (_React$Component2) {
-	  _inherits(Map, _React$Component2);
-
-	  function Map() {
-	    _classCallCheck(this, Map);
-
-	    return _possibleConstructorReturn(this, (Map.__proto__ || Object.getPrototypeOf(Map)).apply(this, arguments));
-	  }
-
-	  _createClass(Map, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      this.map = new google.maps.Map(this.refs.map, {
-	        center: EIFFEL_TOWER_POSITION,
-	        zoom: 16
-	      });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var mapStyle = {
-	        width: '100%',
-	        margin: '0 auto',
-	        height: '100vh',
-	        border: '1px solid black'
-	      };
-
-	      return _react2.default.createElement(
-	        'div',
-	        _defineProperty({ ref: 'map', style: mapStyle }, 'ref', 'map'),
-	        'I should be a map!'
-	      );
-	    }
-	  }]);
-
-	  return Map;
-	}(_react2.default.Component);
-
-	_reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('app'));
 
 /***/ }
 /******/ ]);
