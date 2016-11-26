@@ -4,7 +4,7 @@ var exphbs  = require('express-handlebars');
 var favicon = require('serve-favicon');
 
 var app = express();
-app.use(favicon(__dirname + '/public/img/favicon2.ico'));
+app.use(favicon(__dirname + '/public/img/favicon.ico'));
 app.engine('handlebars', 
 	exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
