@@ -149,7 +149,7 @@ ul.kf-slider li {
   /* line 90, ../../sass/home.scss */
   ul.kf-slider li {
     /*-- Image 1: large --*/
-    background-image: url(../img/home/desktop/splash1_desktop.jpg);
+    background-image: url(../img/home/desktop/splash1_optimized_desktop.jpg);
   }
 }
 /* line 110, ../../sass/home.scss */
@@ -203,33 +203,34 @@ ul.kf-slider li:nth-child(3) {
   padding: 0 11px 0 13px;
   text-overflow: ellipsis;
   width: 300px;
+  border: 1.3px solid black;
 }
 
-/* line 152, ../../sass/home.scss */
+/* line 153, ../../sass/home.scss */
 #pac-input:focus {
   border-color: #4d90fe;
 }
 
-/* line 156, ../../sass/home.scss */
+/* line 157, ../../sass/home.scss */
 .pac-container {
   font-family: Roboto;
 }
 
-/* line 160, ../../sass/home.scss */
+/* line 161, ../../sass/home.scss */
 #type-selector {
   color: #fff;
   background-color: #4d90fe;
   padding: 5px 11px 0px 11px;
 }
 
-/* line 166, ../../sass/home.scss */
+/* line 167, ../../sass/home.scss */
 #type-selector label {
   font-family: Roboto;
   font-size: 13px;
   font-weight: 300;
 }
 
-/* line 171, ../../sass/home.scss */
+/* line 172, ../../sass/home.scss */
 #target {
   width: 345px;
 }

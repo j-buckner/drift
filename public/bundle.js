@@ -131,7 +131,7 @@
 	      // Create the search box and link it to the UI element.
 	      var input = document.getElementById('pac-input');
 	      var searchBox = new google.maps.places.SearchBox(input);
-	      map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+	      map.controls[google.maps.ControlPosition.CENTER].push(input);
 
 	      // Bias the SearchBox results towards current map's viewport.
 	      map.addListener('bounds_changed', function () {
@@ -142,8 +142,13 @@
 	      // Listen for the event fired when the user selects a prediction and retrieve
 	      // more details for that place.
 	      searchBox.addListener('places_changed', function () {
-	        var places = searchBox.getPlaces();
 
+	        if (map.controls[google.maps.ControlPosition.CENTER].length > 0) {
+	          map.controls[google.maps.ControlPosition.CENTER].pop();
+	          map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+	        }
+
+	        var places = searchBox.getPlaces();
 	        if (places.length == 0) {
 	          return;
 	        }
@@ -200,7 +205,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement('input', { id: 'pac-input', className: 'controls', type: 'text', placeholder: 'Search Box' }),
+	        _react2.default.createElement('input', { id: 'pac-input', className: 'controls', type: 'text', placeholder: 'Where are you heading?' }),
 	        _react2.default.createElement('div', _defineProperty({ ref: 'map', style: mapStyle }, 'ref', 'map'))
 	      );
 	    }
