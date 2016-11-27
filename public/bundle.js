@@ -78,11 +78,6 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var ARC_DE_TRIOMPHE_POSITION = {
-	  lat: 48.873947,
-	  lng: 2.295038
-	};
-
 	var EIFFEL_TOWER_POSITION = {
 	  lat: 48.858608,
 	  lng: 2.294471

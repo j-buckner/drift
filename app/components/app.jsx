@@ -1,11 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const ARC_DE_TRIOMPHE_POSITION = {
-  lat: 48.873947,
-  lng: 2.295038
-};
-
 const EIFFEL_TOWER_POSITION = {
   lat: 48.858608,
   lng: 2.294471
@@ -42,7 +37,7 @@ class Map extends React.Component {
     // Listen for the event fired when the user selects a prediction and retrieve
     // more details for that place.
     searchBox.addListener('places_changed', function() {
-      
+
       if (map.controls[google.maps.ControlPosition.CENTER].length > 0) {
         map.controls[google.maps.ControlPosition.CENTER].pop();
         map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);        
