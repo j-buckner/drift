@@ -6,15 +6,11 @@ var favicon = require('serve-favicon');
 var app = express();
 app.use(favicon(__dirname + '/public/img/favicon.ico'));
 app.engine('handlebars', 
-	exphbs({defaultLayout: 'main'}));
+    exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
 app.get('/', function(req, res){
-	res.render('home');
-});
-
-app.get('/app', function(req, res){
-	res.render('app');
+  res.render('app');
 });
 
 app.use(express.static('public'));
