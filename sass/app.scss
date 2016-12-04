@@ -1,5 +1,10 @@
 // Imports
 @import "bourbon/bourbon";
+@import "../vendor/ammap3/ammap/ammap.css";
+
+body {
+  background-color: #7888A9;
+}
 
 // Home Page
 /* make keyframes that tell the start state and the end state of our object */
@@ -173,3 +178,10 @@ ul.kf-slider{
   width: 345px;
 }
 
+
+/*----------------------------------------------   
+-- Travel Profile Builder
+-----------------------------------------------  */
+.page-wrapper {
+  color: #39AADE;
+}

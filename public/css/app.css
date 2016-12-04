@@ -1,3 +1,9 @@
+@import url(../vendor/ammap3/ammap/ammap.css);
+/* line 5, ../../sass/app.scss */
+body {
+  background-color: #7888A9;
+}
+
 /* make keyframes that tell the start state and the end state of our object */
 @-webkit-keyframes fadeIn {
   from {
@@ -23,7 +29,7 @@
     opacity: 1;
   }
 }
-/* line 10, ../../sass/home.scss */
+/* line 15, ../../sass/app.scss */
 .fade-in {
   opacity: 0;
   /* make things invisible upon start */
@@ -40,20 +46,20 @@
   animation-duration: 1s;
 }
 
-/* line 25, ../../sass/home.scss */
+/* line 30, ../../sass/app.scss */
 .fade-in.one {
   -webkit-animation-delay: 0.3s;
   -moz-animation-delay: 0.3s;
   animation-delay: 0.3s;
 }
 
-/* line 31, ../../sass/home.scss */
+/* line 36, ../../sass/app.scss */
 h1 {
   font-family: 'Raleway', sans-serif;
   color: rgba(0, 0, 0, 0.5);
 }
 
-/* line 36, ../../sass/home.scss */
+/* line 41, ../../sass/app.scss */
 h3 {
   font-family: 'Raleway', sans-serif;
   color: rgba(0, 0, 0, 0.5);
@@ -62,7 +68,7 @@ h3 {
 /*----------------------------------------------   
 --Banner
 -----------------------------------------------  */
-/* line 44, ../../sass/home.scss */
+/* line 49, ../../sass/app.scss */
 .sect-banner {
   display: table;
   width: 100%;
@@ -74,7 +80,7 @@ h3 {
   /*-- Create an Overlay --*/
   /*-- Vertically center --*/
 }
-/* line 55, ../../sass/home.scss */
+/* line 60, ../../sass/app.scss */
 .sect-banner:after {
   content: '';
   position: absolute;
@@ -84,7 +90,7 @@ h3 {
   width: 100%;
   z-index: 0;
 }
-/* line 66, ../../sass/home.scss */
+/* line 71, ../../sass/app.scss */
 .sect-banner .v-center {
   display: table-cell;
   position: relative;
@@ -122,12 +128,12 @@ h3 {
 /*----------------------------------------------   
 --List for images, sm and large
 -----------------------------------------------  */
-/* line 89, ../../sass/home.scss */
+/* line 94, ../../sass/app.scss */
 ul.kf-slider {
   /*-- Image 2 --*/
   /*-- Image 3 --*/
 }
-/* line 90, ../../sass/home.scss */
+/* line 95, ../../sass/app.scss */
 ul.kf-slider li {
   height: 100%;
   width: 100%;
@@ -146,13 +152,13 @@ ul.kf-slider li {
   background-image: url(../img/home/mobile/splash1_edit_mobile.jpg);
 }
 @media (min-width: 32em) {
-  /* line 90, ../../sass/home.scss */
+  /* line 95, ../../sass/app.scss */
   ul.kf-slider li {
     /*-- Image 1: large --*/
     background-image: url(../img/home/desktop/splash1_desktop.jpg);
   }
 }
-/* line 110, ../../sass/home.scss */
+/* line 115, ../../sass/app.scss */
 ul.kf-slider li:nth-child(2) {
   background-image: url(../img/home/mobile/splash2_edit_mobile.jpg);
   /*-- Animation delay: 3s --*/
@@ -161,12 +167,12 @@ ul.kf-slider li:nth-child(2) {
   animation-delay: 4s;
 }
 @media (min-width: 32em) {
-  /* line 110, ../../sass/home.scss */
+  /* line 115, ../../sass/app.scss */
   ul.kf-slider li:nth-child(2) {
     background-image: url(../img/home/desktop/splash2_desktop.jpg);
   }
 }
-/* line 119, ../../sass/home.scss */
+/* line 124, ../../sass/app.scss */
 ul.kf-slider li:nth-child(3) {
   background-image: url(../img/home/mobile/splash3_edit_mobile.jpg);
   /* Animation delay: 6s */
@@ -175,13 +181,13 @@ ul.kf-slider li:nth-child(3) {
   animation-delay: 8s;
 }
 @media (min-width: 32em) {
-  /* line 119, ../../sass/home.scss */
+  /* line 124, ../../sass/app.scss */
   ul.kf-slider li:nth-child(3) {
     background-image: url(../img/home/desktop/splash3_desktop.jpg);
   }
 }
 
-/* line 130, ../../sass/home.scss */
+/* line 135, ../../sass/app.scss */
 .controls {
   margin-top: 10px;
   border: 1px solid transparent;
@@ -193,7 +199,7 @@ ul.kf-slider li:nth-child(3) {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
-/* line 141, ../../sass/home.scss */
+/* line 146, ../../sass/app.scss */
 #pac-input {
   background-color: #fff;
   font-family: Roboto;
@@ -206,31 +212,39 @@ ul.kf-slider li:nth-child(3) {
   border: 1.3px solid black;
 }
 
-/* line 153, ../../sass/home.scss */
+/* line 158, ../../sass/app.scss */
 #pac-input:focus {
   border-color: #4d90fe;
 }
 
-/* line 157, ../../sass/home.scss */
+/* line 162, ../../sass/app.scss */
 .pac-container {
   font-family: Roboto;
 }
 
-/* line 161, ../../sass/home.scss */
+/* line 166, ../../sass/app.scss */
 #type-selector {
   color: #fff;
   background-color: #4d90fe;
   padding: 5px 11px 0px 11px;
 }
 
-/* line 167, ../../sass/home.scss */
+/* line 172, ../../sass/app.scss */
 #type-selector label {
   font-family: Roboto;
   font-size: 13px;
   font-weight: 300;
 }
 
-/* line 172, ../../sass/home.scss */
+/* line 177, ../../sass/app.scss */
 #target {
   width: 345px;
+}
+
+/*----------------------------------------------   
+-- Travel Profile Builder
+-----------------------------------------------  */
+/* line 185, ../../sass/app.scss */
+.page-wrapper {
+  color: #39AADE;
 }
