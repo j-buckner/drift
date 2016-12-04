@@ -6,6 +6,16 @@ body {
   background-color: #7888A9;
 }
 
+h1 {
+  font-family: 'Raleway', sans-serif;
+  color: rgba(0, 0, 0, 0.5);  
+}
+
+h3 {
+  font-family: 'Raleway', sans-serif;
+  color: rgba(0, 0, 0, 0.5)
+}
+
 // Home Page
 /* make keyframes that tell the start state and the end state of our object */
 @-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
@@ -31,16 +41,6 @@ body {
   -webkit-animation-delay: 0.3s;
   -moz-animation-delay: 0.3s;
   animation-delay: 0.3s;
-}
-
-h1 {
-  font-family: 'Raleway', sans-serif;
-  color: rgba(0, 0, 0, 0.5);  
-}
-
-h3 {
-  font-family: 'Raleway', sans-serif;
-  color: rgba(0, 0, 0, 0.5)
 }
 
 /*----------------------------------------------   
@@ -182,6 +182,7 @@ ul.kf-slider{
 /*----------------------------------------------   
 -- Travel Profile Builder
 -----------------------------------------------  */
-.page-wrapper {
-  color: #39AADE;
+#mapdiv {
+  width: 100%;
+  height: 100vh;
 }

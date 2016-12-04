@@ -13,6 +13,10 @@ app.get('/', function(req, res){
   res.render('app');
 });
 
+app.get('/travel-profile', function(req, res){
+  res.render('app');
+});
+
 app.use(express.static('public'));
 app.use('/public', express.static(__dirname + '/node_modules/materialize-css/dist'));
 
