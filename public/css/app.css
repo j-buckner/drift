@@ -1,17 +1,11 @@
 @import url(../vendor/ammap3/ammap/ammap.css);
 /* line 5, ../../sass/app.scss */
 body {
-  background-color: #7888A9;
+  background-color: #BECCF9;
 }
 
 /* line 9, ../../sass/app.scss */
-h1 {
-  font-family: 'Raleway', sans-serif;
-  color: rgba(0, 0, 0, 0.5);
-}
-
-/* line 14, ../../sass/app.scss */
-h3 {
+h1, h2, h3 {
   font-family: 'Raleway', sans-serif;
   color: rgba(0, 0, 0, 0.5);
 }
@@ -41,7 +35,7 @@ h3 {
     opacity: 1;
   }
 }
-/* line 25, ../../sass/app.scss */
+/* line 20, ../../sass/app.scss */
 .fade-in {
   opacity: 0;
   /* make things invisible upon start */
@@ -58,7 +52,7 @@ h3 {
   animation-duration: 1s;
 }
 
-/* line 40, ../../sass/app.scss */
+/* line 35, ../../sass/app.scss */
 .fade-in.one {
   -webkit-animation-delay: 0.3s;
   -moz-animation-delay: 0.3s;
@@ -68,7 +62,7 @@ h3 {
 /*----------------------------------------------   
 --Banner
 -----------------------------------------------  */
-/* line 49, ../../sass/app.scss */
+/* line 44, ../../sass/app.scss */
 .sect-banner {
   display: table;
   width: 100%;
@@ -80,7 +74,7 @@ h3 {
   /*-- Create an Overlay --*/
   /*-- Vertically center --*/
 }
-/* line 60, ../../sass/app.scss */
+/* line 55, ../../sass/app.scss */
 .sect-banner:after {
   content: '';
   position: absolute;
@@ -90,7 +84,7 @@ h3 {
   width: 100%;
   z-index: 0;
 }
-/* line 71, ../../sass/app.scss */
+/* line 66, ../../sass/app.scss */
 .sect-banner .v-center {
   display: table-cell;
   position: relative;
@@ -128,12 +122,12 @@ h3 {
 /*----------------------------------------------   
 --List for images, sm and large
 -----------------------------------------------  */
-/* line 94, ../../sass/app.scss */
+/* line 89, ../../sass/app.scss */
 ul.kf-slider {
   /*-- Image 2 --*/
   /*-- Image 3 --*/
 }
-/* line 95, ../../sass/app.scss */
+/* line 90, ../../sass/app.scss */
 ul.kf-slider li {
   height: 100%;
   width: 100%;
@@ -152,13 +146,13 @@ ul.kf-slider li {
   background-image: url(../img/home/mobile/splash1_edit_mobile.jpg);
 }
 @media (min-width: 32em) {
-  /* line 95, ../../sass/app.scss */
+  /* line 90, ../../sass/app.scss */
   ul.kf-slider li {
     /*-- Image 1: large --*/
     background-image: url(../img/home/desktop/splash1_desktop.jpg);
   }
 }
-/* line 115, ../../sass/app.scss */
+/* line 110, ../../sass/app.scss */
 ul.kf-slider li:nth-child(2) {
   background-image: url(../img/home/mobile/splash2_edit_mobile.jpg);
   /*-- Animation delay: 3s --*/
@@ -167,12 +161,12 @@ ul.kf-slider li:nth-child(2) {
   animation-delay: 4s;
 }
 @media (min-width: 32em) {
-  /* line 115, ../../sass/app.scss */
+  /* line 110, ../../sass/app.scss */
   ul.kf-slider li:nth-child(2) {
     background-image: url(../img/home/desktop/splash2_desktop.jpg);
   }
 }
-/* line 124, ../../sass/app.scss */
+/* line 119, ../../sass/app.scss */
 ul.kf-slider li:nth-child(3) {
   background-image: url(../img/home/mobile/splash3_edit_mobile.jpg);
   /* Animation delay: 6s */
@@ -181,13 +175,13 @@ ul.kf-slider li:nth-child(3) {
   animation-delay: 8s;
 }
 @media (min-width: 32em) {
-  /* line 124, ../../sass/app.scss */
+  /* line 119, ../../sass/app.scss */
   ul.kf-slider li:nth-child(3) {
     background-image: url(../img/home/desktop/splash3_desktop.jpg);
   }
 }
 
-/* line 135, ../../sass/app.scss */
+/* line 130, ../../sass/app.scss */
 .controls {
   margin-top: 10px;
   border: 1px solid transparent;
@@ -199,7 +193,7 @@ ul.kf-slider li:nth-child(3) {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
-/* line 146, ../../sass/app.scss */
+/* line 141, ../../sass/app.scss */
 #pac-input {
   background-color: #fff;
   font-family: Roboto;
@@ -212,31 +206,31 @@ ul.kf-slider li:nth-child(3) {
   border: 1.3px solid black;
 }
 
-/* line 158, ../../sass/app.scss */
+/* line 153, ../../sass/app.scss */
 #pac-input:focus {
   border-color: #4d90fe;
 }
 
-/* line 162, ../../sass/app.scss */
+/* line 157, ../../sass/app.scss */
 .pac-container {
   font-family: Roboto;
 }
 
-/* line 166, ../../sass/app.scss */
+/* line 161, ../../sass/app.scss */
 #type-selector {
   color: #fff;
   background-color: #4d90fe;
   padding: 5px 11px 0px 11px;
 }
 
-/* line 172, ../../sass/app.scss */
+/* line 167, ../../sass/app.scss */
 #type-selector label {
   font-family: Roboto;
   font-size: 13px;
   font-weight: 300;
 }
 
-/* line 177, ../../sass/app.scss */
+/* line 172, ../../sass/app.scss */
 #target {
   width: 345px;
 }
@@ -244,8 +238,15 @@ ul.kf-slider li:nth-child(3) {
 /*----------------------------------------------   
 -- Travel Profile Builder
 -----------------------------------------------  */
+/* line 180, ../../sass/app.scss */
+#profile-container {
+  padding-left: 300px;
+  width: 100%;
+  height: 100vh;
+}
+
 /* line 185, ../../sass/app.scss */
 #mapdiv {
   width: 100%;
-  height: 100vh;
+  height: 75vh;
 }

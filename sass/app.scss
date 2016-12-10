@@ -3,17 +3,12 @@
 @import "../vendor/ammap3/ammap/ammap.css";
 
 body {
-  background-color: #7888A9;
+  background-color: #BECCF9;
 }
 
-h1 {
+h1, h2, h3 {
   font-family: 'Raleway', sans-serif;
   color: rgba(0, 0, 0, 0.5);  
-}
-
-h3 {
-  font-family: 'Raleway', sans-serif;
-  color: rgba(0, 0, 0, 0.5)
 }
 
 // Home Page
@@ -182,7 +177,12 @@ ul.kf-slider{
 /*----------------------------------------------   
 -- Travel Profile Builder
 -----------------------------------------------  */
-#mapdiv {
+#profile-container {
+  padding-left: 300px;
   width: 100%;
   height: 100vh;
+}
+#mapdiv {
+  width: 100%;
+  height: 75vh;
 }
