@@ -231,12 +231,9 @@
 	  _createClass(SidePanel, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      $('.button-collapse').sideNav({});
-	    }
-	  }, {
-	    key: 'hideNav',
-	    value: function hideNav() {
-	      // $('.button-collapse').sideNav('hide');
+	      $('.button-collapse').sideNav({
+	        menuWidth: '200px'
+	      });
 	    }
 	  }, {
 	    key: 'render',

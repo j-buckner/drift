@@ -60,17 +60,15 @@ class TravelProfile extends React.Component {
 
 class SidePanel extends React.Component {
   componentDidMount() {
-      $('.button-collapse').sideNav({});
-  }
-  hideNav() {
-     // $('.button-collapse').sideNav('hide');
+      $('.button-collapse').sideNav({
+        menuWidth: '200px'
+      });
   }
   render() {
     let styles = {
       'float': 'right'
     }
-    return (
-      <div>
+    return (<div>
         <ul id="slide-out" className="side-nav fixed">
             <li className="no-padding">
             <ul className="collapsible collapsible-accordion">
