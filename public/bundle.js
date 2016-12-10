@@ -197,14 +197,18 @@
 	        'div',
 	        { id: 'profile-container' },
 	        _react2.default.createElement(
-	          'h2',
-	          { style: styles },
-	          ' Lets Build Your Travel Profile '
-	        ),
-	        _react2.default.createElement(
-	          'h3',
-	          { style: styles },
-	          ' Where Have You Been? '
+	          'div',
+	          { className: 'col s4' },
+	          _react2.default.createElement(
+	            'h2',
+	            { style: styles },
+	            ' Lets Build Your Travel Profile '
+	          ),
+	          _react2.default.createElement(
+	            'h3',
+	            { style: styles },
+	            ' Where Have You Been? '
+	          )
 	        ),
 	        _react2.default.createElement(SidePanel, null),
 	        _react2.default.createElement(Map, null)
@@ -225,6 +229,16 @@
 	  }
 
 	  _createClass(SidePanel, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      $('.button-collapse').sideNav({});
+	    }
+	  }, {
+	    key: 'hideNav',
+	    value: function hideNav() {
+	      // $('.button-collapse').sideNav('hide');
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var styles = {
@@ -591,6 +605,15 @@
 	                )
 	              )
 	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'a',
+	          { onClick: this.hideNav, href: '#', 'data-activates': 'slide-out', className: 'button-collapse' },
+	          _react2.default.createElement(
+	            'i',
+	            { className: 'material-icons' },
+	            'menu'
 	          )
 	        )
 	      );

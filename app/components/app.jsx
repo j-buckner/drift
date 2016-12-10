@@ -47,8 +47,10 @@ class TravelProfile extends React.Component {
 
     return (
       <div id='profile-container'>
-        <h2 style={styles}> Lets Build Your Travel Profile </h2>
-        <h3 style={styles}> Where Have You Been? </h3>
+        <div className="col s4">
+          <h2 style={styles}> Lets Build Your Travel Profile </h2>
+          <h3 style={styles}> Where Have You Been? </h3>
+        </div>
         <SidePanel />
         <Map/>
       </div>
@@ -57,6 +59,12 @@ class TravelProfile extends React.Component {
 }
 
 class SidePanel extends React.Component {
+  componentDidMount() {
+      $('.button-collapse').sideNav({});
+  }
+  hideNav() {
+     // $('.button-collapse').sideNav('hide');
+  }
   render() {
     let styles = {
       'float': 'right'
@@ -135,6 +143,7 @@ class SidePanel extends React.Component {
             </ul>
           </li>
         </ul>
+        <a onClick={this.hideNav} href="#" data-activates="slide-out" className="button-collapse"><i className="material-icons">menu</i></a>
       </div>
     )
   }
