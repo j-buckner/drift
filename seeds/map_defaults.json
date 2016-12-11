@@ -1,0 +1,30 @@
+{
+	"continents": [
+    "europe",
+    "north america",
+    "south america",
+    "africa",
+    "asia",
+    "oceania"
+  ],
+  "countries": {
+    "europe": [
+      "test1"
+    ],
+    "north america": [
+      "test2"
+    ],
+    "south america": [
+      "test3"
+    ],
+    "africa": [
+      "test4"
+    ],
+    "asia": [
+      "test5"
+    ],
+    "oceania": [
+      "test6"
+    ],
+  }
+}

@@ -1,0 +1,5 @@
+{
+	"undefined": "localhost/driftdb",
+	"dev": "localhost/driftdb",
+	"prod": "localhost/PROD_DB_NAME"
+}
