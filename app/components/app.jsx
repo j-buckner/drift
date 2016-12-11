@@ -155,7 +155,7 @@ class Map extends React.Component {
       "dragMap": true,
       "theme": "dark",
       "dataProvider": {
-        "map": "worldLow",
+        "map": "worldHigh",
         "getAreasFromMap": true
       },
       "areasSettings": {
