@@ -189,6 +189,9 @@
 	  _createClass(TravelProfile, [{
 	    key: 'render',
 	    value: function render() {
+	      var container = document.getElementById('travel-data');
+	      var travelData = JSON.parse(container.childNodes[0].data);
+
 	      var styles = {
 	        'textAlign': 'center'
 	      };
@@ -210,7 +213,7 @@
 	            ' Where Have You Been? '
 	          )
 	        ),
-	        _react2.default.createElement(SidePanel, null),
+	        _react2.default.createElement(SidePanel, { continents: travelData }),
 	        _react2.default.createElement(Map, null)
 	      );
 	    }
@@ -231,6 +234,7 @@
 	  _createClass(SidePanel, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
+	      // console.log(this.props.continents);
 	      $('.button-collapse').sideNav({
 	        menuWidth: '200px'
 	      });

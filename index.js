@@ -10,12 +10,25 @@ app.engine('handlebars',
     exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
+var Continent = require("./app/models/continent").Continent;
 app.get('/', function(req, res){
-  res.render('app');
+  Continent.find({}, function(err, continents){
+    if(err){
+      console.log(err);
+    } else{
+      res.render('app', {continents: JSON.stringify(continents)});
+    }
+  })
 });
 
 app.get('/travel-profile', function(req, res){
-  res.render('app');
+  Continent.find({}, function(err, continents){
+    if(err){
+      console.log(err);
+    } else{
+      res.render('app', {continents: JSON.stringify(continents)});
+    }
+  })
 });
 
 app.use(express.static('public'));
@@ -28,17 +41,6 @@ var url = 'mongodb://localhost:27017/drift';
 mongoose.connect(url);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
-
-var Continent = require("./app/models/continent").Continent;
-var Country = require("./app/models/country").Country;
-db.once('open', function() {
-  
-  // mongoose.connection.db.dropCollection('countries');
-  // mongoose.connection.db.dropCollection('continents');
-  
-  // var germany = new Country({ name: 'Germany' });
-  // germany.save();
-});
 
 var port = Number(process.env.PORT || 5000);
 app.listen(port)

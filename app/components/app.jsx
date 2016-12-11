@@ -41,6 +41,9 @@ class Home extends React.Component {
 
 class TravelProfile extends React.Component {
   render() {
+    let container = document.getElementById('travel-data');
+    let travelData = JSON.parse(container.childNodes[0].data);
+    
     let styles = {
       'textAlign': 'center'
     }
@@ -51,7 +54,7 @@ class TravelProfile extends React.Component {
           <h2 style={styles}> Lets Build Your Travel Profile </h2>
           <h3 style={styles}> Where Have You Been? </h3>
         </div>
-        <SidePanel />
+        <SidePanel continents={travelData} />
         <Map/>
       </div>
     )
@@ -60,9 +63,10 @@ class TravelProfile extends React.Component {
 
 class SidePanel extends React.Component {
   componentDidMount() {
-      $('.button-collapse').sideNav({
-        menuWidth: '200px'
-      });
+    // console.log(this.props.continents);
+    $('.button-collapse').sideNav({
+      menuWidth: '200px'
+    });
   }
   render() {
     let styles = {
