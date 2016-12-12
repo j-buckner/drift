@@ -222,19 +222,100 @@
 	  return TravelProfile;
 	}(_react2.default.Component);
 
-	var SidePanel = function (_React$Component4) {
-	  _inherits(SidePanel, _React$Component4);
+	var SidePanelTopRowChildren = function (_React$Component4) {
+	  _inherits(SidePanelTopRowChildren, _React$Component4);
 
-	  function SidePanel() {
+	  function SidePanelTopRowChildren() {
+	    _classCallCheck(this, SidePanelTopRowChildren);
+
+	    return _possibleConstructorReturn(this, (SidePanelTopRowChildren.__proto__ || Object.getPrototypeOf(SidePanelTopRowChildren)).apply(this, arguments));
+	  }
+
+	  _createClass(SidePanelTopRowChildren, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'li',
+	        null,
+	        _react2.default.createElement(
+	          'a',
+	          { href: '#!' },
+	          this.props.name
+	        )
+	      );
+	    }
+	  }]);
+
+	  return SidePanelTopRowChildren;
+	}(_react2.default.Component);
+
+	var SidePanelTopRow = function (_React$Component5) {
+	  _inherits(SidePanelTopRow, _React$Component5);
+
+	  function SidePanelTopRow() {
+	    _classCallCheck(this, SidePanelTopRow);
+
+	    return _possibleConstructorReturn(this, (SidePanelTopRow.__proto__ || Object.getPrototypeOf(SidePanelTopRow)).apply(this, arguments));
+	  }
+
+	  _createClass(SidePanelTopRow, [{
+	    key: 'render',
+	    value: function render() {
+	      var styles = {
+	        'float': 'right'
+	      };
+
+	      var countries = [];
+	      this.props.continent.countries.forEach(function (country) {
+	        countries.push(_react2.default.createElement(SidePanelTopRowChildren, { name: country.code, key: country.code }));
+	      });
+
+	      return _react2.default.createElement(
+	        'li',
+	        null,
+	        _react2.default.createElement(
+	          'a',
+	          { className: 'collapsible-header waves-effect' },
+	          this.props.continent.name,
+	          _react2.default.createElement(
+	            'i',
+	            { className: 'material-icons', style: styles },
+	            'arrow_drop_down'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'collapsible-body' },
+	          _react2.default.createElement(
+	            'ul',
+	            null,
+	            countries
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return SidePanelTopRow;
+	}(_react2.default.Component);
+
+	var SidePanel = function (_React$Component6) {
+	  _inherits(SidePanel, _React$Component6);
+
+	  function SidePanel(props) {
 	    _classCallCheck(this, SidePanel);
 
-	    return _possibleConstructorReturn(this, (SidePanel.__proto__ || Object.getPrototypeOf(SidePanel)).apply(this, arguments));
+	    var _this6 = _possibleConstructorReturn(this, (SidePanel.__proto__ || Object.getPrototypeOf(SidePanel)).call(this, props));
+
+	    _this6.state = {
+	      continents: props.continents
+	    };
+	    return _this6;
 	  }
 
 	  _createClass(SidePanel, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      // console.log(this.props.continents);
 	      $('.button-collapse').sideNav({
 	        menuWidth: '200px'
 	      });
@@ -245,6 +326,12 @@
 	      var styles = {
 	        'float': 'right'
 	      };
+
+	      var continentRows = [];
+	      this.state.continents.forEach(function (continent) {
+	        continentRows.push(_react2.default.createElement(SidePanelTopRow, { continent: continent, key: continent.name }));
+	      });
+
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -257,354 +344,7 @@
 	            _react2.default.createElement(
 	              'ul',
 	              { className: 'collapsible collapsible-accordion' },
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  'a',
-	                  { className: 'collapsible-header waves-effect' },
-	                  'Europe',
-	                  _react2.default.createElement(
-	                    'i',
-	                    { className: 'material-icons', style: styles },
-	                    'arrow_drop_down'
-	                  )
-	                ),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'collapsible-body' },
-	                  _react2.default.createElement(
-	                    'ul',
-	                    null,
-	                    _react2.default.createElement(
-	                      'li',
-	                      null,
-	                      _react2.default.createElement(
-	                        'a',
-	                        { href: '#!' },
-	                        'First'
-	                      )
-	                    ),
-	                    _react2.default.createElement(
-	                      'li',
-	                      null,
-	                      _react2.default.createElement(
-	                        'a',
-	                        { href: '#!' },
-	                        'Second'
-	                      )
-	                    ),
-	                    _react2.default.createElement(
-	                      'li',
-	                      null,
-	                      _react2.default.createElement(
-	                        'a',
-	                        { href: '#!' },
-	                        'Third'
-	                      )
-	                    ),
-	                    _react2.default.createElement(
-	                      'li',
-	                      null,
-	                      _react2.default.createElement(
-	                        'a',
-	                        { href: '#!' },
-	                        'Fourth'
-	                      )
-	                    )
-	                  )
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  'a',
-	                  { className: 'collapsible-header waves-effect' },
-	                  'North America',
-	                  _react2.default.createElement(
-	                    'i',
-	                    { className: 'material-icons', style: styles },
-	                    'arrow_drop_down'
-	                  )
-	                ),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'collapsible-body' },
-	                  _react2.default.createElement(
-	                    'ul',
-	                    null,
-	                    _react2.default.createElement(
-	                      'li',
-	                      null,
-	                      _react2.default.createElement(
-	                        'a',
-	                        { href: '#!' },
-	                        'First'
-	                      )
-	                    ),
-	                    _react2.default.createElement(
-	                      'li',
-	                      null,
-	                      _react2.default.createElement(
-	                        'a',
-	                        { href: '#!' },
-	                        'Second'
-	                      )
-	                    ),
-	                    _react2.default.createElement(
-	                      'li',
-	                      null,
-	                      _react2.default.createElement(
-	                        'a',
-	                        { href: '#!' },
-	                        'Third'
-	                      )
-	                    ),
-	                    _react2.default.createElement(
-	                      'li',
-	                      null,
-	                      _react2.default.createElement(
-	                        'a',
-	                        { href: '#!' },
-	                        'Fourth'
-	                      )
-	                    )
-	                  )
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  'a',
-	                  { className: 'collapsible-header waves-effect' },
-	                  'South America',
-	                  _react2.default.createElement(
-	                    'i',
-	                    { className: 'material-icons', style: styles },
-	                    'arrow_drop_down'
-	                  )
-	                ),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'collapsible-body' },
-	                  _react2.default.createElement(
-	                    'ul',
-	                    null,
-	                    _react2.default.createElement(
-	                      'li',
-	                      null,
-	                      _react2.default.createElement(
-	                        'a',
-	                        { href: '#!' },
-	                        'First'
-	                      )
-	                    ),
-	                    _react2.default.createElement(
-	                      'li',
-	                      null,
-	                      _react2.default.createElement(
-	                        'a',
-	                        { href: '#!' },
-	                        'Second'
-	                      )
-	                    ),
-	                    _react2.default.createElement(
-	                      'li',
-	                      null,
-	                      _react2.default.createElement(
-	                        'a',
-	                        { href: '#!' },
-	                        'Third'
-	                      )
-	                    ),
-	                    _react2.default.createElement(
-	                      'li',
-	                      null,
-	                      _react2.default.createElement(
-	                        'a',
-	                        { href: '#!' },
-	                        'Fourth'
-	                      )
-	                    )
-	                  )
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  'a',
-	                  { className: 'collapsible-header waves-effect' },
-	                  'Africa',
-	                  _react2.default.createElement(
-	                    'i',
-	                    { className: 'material-icons', style: styles },
-	                    'arrow_drop_down'
-	                  )
-	                ),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'collapsible-body' },
-	                  _react2.default.createElement(
-	                    'ul',
-	                    null,
-	                    _react2.default.createElement(
-	                      'li',
-	                      null,
-	                      _react2.default.createElement(
-	                        'a',
-	                        { href: '#!' },
-	                        'First'
-	                      )
-	                    ),
-	                    _react2.default.createElement(
-	                      'li',
-	                      null,
-	                      _react2.default.createElement(
-	                        'a',
-	                        { href: '#!' },
-	                        'Second'
-	                      )
-	                    ),
-	                    _react2.default.createElement(
-	                      'li',
-	                      null,
-	                      _react2.default.createElement(
-	                        'a',
-	                        { href: '#!' },
-	                        'Third'
-	                      )
-	                    ),
-	                    _react2.default.createElement(
-	                      'li',
-	                      null,
-	                      _react2.default.createElement(
-	                        'a',
-	                        { href: '#!' },
-	                        'Fourth'
-	                      )
-	                    )
-	                  )
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  'a',
-	                  { className: 'collapsible-header waves-effect' },
-	                  'Asia',
-	                  _react2.default.createElement(
-	                    'i',
-	                    { className: 'material-icons', style: styles },
-	                    'arrow_drop_down'
-	                  )
-	                ),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'collapsible-body' },
-	                  _react2.default.createElement(
-	                    'ul',
-	                    null,
-	                    _react2.default.createElement(
-	                      'li',
-	                      null,
-	                      _react2.default.createElement(
-	                        'a',
-	                        { href: '#!' },
-	                        'First'
-	                      )
-	                    ),
-	                    _react2.default.createElement(
-	                      'li',
-	                      null,
-	                      _react2.default.createElement(
-	                        'a',
-	                        { href: '#!' },
-	                        'Second'
-	                      )
-	                    ),
-	                    _react2.default.createElement(
-	                      'li',
-	                      null,
-	                      _react2.default.createElement(
-	                        'a',
-	                        { href: '#!' },
-	                        'Third'
-	                      )
-	                    ),
-	                    _react2.default.createElement(
-	                      'li',
-	                      null,
-	                      _react2.default.createElement(
-	                        'a',
-	                        { href: '#!' },
-	                        'Fourth'
-	                      )
-	                    )
-	                  )
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  'a',
-	                  { className: 'collapsible-header waves-effect' },
-	                  'Oceania',
-	                  _react2.default.createElement(
-	                    'i',
-	                    { className: 'material-icons', style: styles },
-	                    'arrow_drop_down'
-	                  )
-	                ),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'collapsible-body' },
-	                  _react2.default.createElement(
-	                    'ul',
-	                    null,
-	                    _react2.default.createElement(
-	                      'li',
-	                      null,
-	                      _react2.default.createElement(
-	                        'a',
-	                        { href: '#!' },
-	                        'First'
-	                      )
-	                    ),
-	                    _react2.default.createElement(
-	                      'li',
-	                      null,
-	                      _react2.default.createElement(
-	                        'a',
-	                        { href: '#!' },
-	                        'Second'
-	                      )
-	                    ),
-	                    _react2.default.createElement(
-	                      'li',
-	                      null,
-	                      _react2.default.createElement(
-	                        'a',
-	                        { href: '#!' },
-	                        'Third'
-	                      )
-	                    ),
-	                    _react2.default.createElement(
-	                      'li',
-	                      null,
-	                      _react2.default.createElement(
-	                        'a',
-	                        { href: '#!' },
-	                        'Fourth'
-	                      )
-	                    )
-	                  )
-	                )
-	              )
+	              continentRows
 	            )
 	          )
 	        ),
@@ -624,8 +364,8 @@
 	  return SidePanel;
 	}(_react2.default.Component);
 
-	var Map = function (_React$Component5) {
-	  _inherits(Map, _React$Component5);
+	var Map = function (_React$Component7) {
+	  _inherits(Map, _React$Component7);
 
 	  function Map() {
 	    _classCallCheck(this, Map);

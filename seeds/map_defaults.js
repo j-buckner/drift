@@ -1091,7 +1091,6 @@ db.once('open', function() {
       {code: "IM"},
       {code: "GI"},
       {code: "FO"},
-      {code: "FO"},
       {code: "AD"},
       {code: "AX"},
       {code: "GG"},
@@ -1112,7 +1111,6 @@ db.once('open', function() {
       {code: "HN"},
       {code: "HT"},
       {code: "JM"},
-      {code: "MX"},
       {code: "MX"},
       {code: "NI"},
       {code: "PA"},
@@ -1170,9 +1168,6 @@ db.once('open', function() {
   var africa = new Continent({
     name: "Africa",
     countries: [
-      {code: "AO"},
-      {code: "BF"},
-      {code: "BF"},
       {code: "AO"},
       {code: "BF"},
       {code: "BI"},

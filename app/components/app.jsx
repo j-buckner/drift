@@ -61,9 +61,46 @@ class TravelProfile extends React.Component {
   }
 }
 
+class SidePanelTopRowChildren extends React.Component {
+  render() {
+    return (
+      <li><a href="#!">{this.props.name}</a></li>
+    )
+  }
+}
+
+class SidePanelTopRow extends React.Component{
+  render() {
+    let styles = {
+      'float': 'right'
+    }
+
+    var countries = [];
+    this.props.continent.countries.forEach( (country) => {
+      countries.push(<SidePanelTopRowChildren name={country.code} key={country.code}/>);
+    });
+
+    return (
+      <li>
+        <a className="collapsible-header waves-effect">{this.props.continent.name}<i className="material-icons" style={styles}>arrow_drop_down</i></a>
+        <div className="collapsible-body">
+          <ul>
+            {countries}
+          </ul>
+        </div>
+      </li>        
+    )
+  }
+}
+
 class SidePanel extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      continents: props.continents
+    };
+  }
   componentDidMount() {
-    // console.log(this.props.continents);
     $('.button-collapse').sideNav({
       menuWidth: '200px'
     });
@@ -72,76 +109,18 @@ class SidePanel extends React.Component {
     let styles = {
       'float': 'right'
     }
-    return (<div>
+
+    var continentRows = [];
+    this.state.continents.forEach((continent) => {
+      continentRows.push(<SidePanelTopRow continent={continent} key={continent.name}/>);
+    });
+
+    return (
+      <div>
         <ul id="slide-out" className="side-nav fixed">
-            <li className="no-padding">
+          <li className="no-padding">
             <ul className="collapsible collapsible-accordion">
-              <li>
-                <a className="collapsible-header waves-effect">Europe<i className="material-icons" style={styles}>arrow_drop_down</i></a>
-                <div className="collapsible-body">
-                  <ul>
-                    <li><a href="#!">First</a></li>
-                    <li><a href="#!">Second</a></li>
-                    <li><a href="#!">Third</a></li>
-                    <li><a href="#!">Fourth</a></li>
-                  </ul>
-                </div>
-              </li>
-              <li>
-                <a className="collapsible-header waves-effect">North America<i className="material-icons" style={styles}>arrow_drop_down</i></a>
-                <div className="collapsible-body">
-                  <ul>
-                    <li><a href="#!">First</a></li>
-                    <li><a href="#!">Second</a></li>
-                    <li><a href="#!">Third</a></li>
-                    <li><a href="#!">Fourth</a></li>
-                  </ul>
-                </div>
-              </li>              
-              <li>
-                <a className="collapsible-header waves-effect">South America<i className="material-icons" style={styles}>arrow_drop_down</i></a>
-                <div className="collapsible-body">
-                  <ul>
-                    <li><a href="#!">First</a></li>
-                    <li><a href="#!">Second</a></li>
-                    <li><a href="#!">Third</a></li>
-                    <li><a href="#!">Fourth</a></li>
-                  </ul>
-                </div>
-              </li>
-              <li>
-                <a className="collapsible-header waves-effect">Africa<i className="material-icons" style={styles}>arrow_drop_down</i></a>
-                <div className="collapsible-body">
-                  <ul>
-                    <li><a href="#!">First</a></li>
-                    <li><a href="#!">Second</a></li>
-                    <li><a href="#!">Third</a></li>
-                    <li><a href="#!">Fourth</a></li>
-                  </ul>
-                </div>
-              </li>
-              <li>
-                <a className="collapsible-header waves-effect">Asia<i className="material-icons" style={styles}>arrow_drop_down</i></a>
-                <div className="collapsible-body">
-                  <ul>
-                    <li><a href="#!">First</a></li>
-                    <li><a href="#!">Second</a></li>
-                    <li><a href="#!">Third</a></li>
-                    <li><a href="#!">Fourth</a></li>
-                  </ul>
-                </div>
-              </li>    
-              <li>
-                <a className="collapsible-header waves-effect">Oceania<i className="material-icons" style={styles}>arrow_drop_down</i></a>
-                <div className="collapsible-body">
-                  <ul>
-                    <li><a href="#!">First</a></li>
-                    <li><a href="#!">Second</a></li>
-                    <li><a href="#!">Third</a></li>
-                    <li><a href="#!">Fourth</a></li>
-                  </ul>
-                </div>
-              </li>                                      
+              {continentRows}
             </ul>
           </li>
         </ul>
