@@ -5,6 +5,10 @@ var CountrySchema = new mongoose.Schema({
     type: String,
     index: true
   },
+  code: {
+  	type: String,
+  	index: true
+  }
 });
 
 var Country = mongoose.model('Country', CountrySchema);

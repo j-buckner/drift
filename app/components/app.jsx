@@ -41,10 +41,12 @@ class Home extends React.Component {
 
 class TravelProfile extends React.Component {
   render() {
-    let container = document.getElementById('travel-data');
-    let travelData = JSON.parse(container.childNodes[0].data);
+    const container = document.getElementById('travel-data');
+    const travelData = JSON.parse(container.childNodes[0].data);
     
-    let styles = {
+    const continents = travelData['continents'];
+    const countries = travelData['countries'];
+    const styles = {
       'textAlign': 'center'
     }
 
@@ -54,7 +56,7 @@ class TravelProfile extends React.Component {
           <h2 style={styles}> Lets Build Your Travel Profile </h2>
           <h3 style={styles}> Where Have You Been? </h3>
         </div>
-        <SidePanel continents={travelData} />
+        <SidePanel continents={continents} countries={countries}/>
         <Map/>
       </div>
     )
@@ -77,7 +79,7 @@ class SidePanelTopRow extends React.Component{
 
     var countries = [];
     this.props.continent.countries.forEach( (country) => {
-      countries.push(<SidePanelTopRowChildren name={country.code} key={country.code}/>);
+      countries.push(<SidePanelTopRowChildren name={country['name']} key={country.code}/>);
     });
 
     return (
@@ -97,21 +99,30 @@ class SidePanel extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      continents: props.continents
+      continents: props.continents,
+      countries: props.countries
     };
   }
   componentDidMount() {
     $('.button-collapse').sideNav({
-      menuWidth: '200px'
+      menuWidth: '288px'
     });
   }
   render() {
-    let styles = {
+    const styles = {
       'float': 'right'
     }
 
     var continentRows = [];
     this.state.continents.forEach((continent) => {
+      continent.countries.forEach((country) => {
+        // Dumb hack based on my poorly designed data model
+        let countrySearch = this.state.countries.find((countryLookup) => {
+          return country['code'] === countryLookup['code'];
+        });
+        country['name'] = countrySearch['name'];
+      });
+
       continentRows.push(<SidePanelTopRow continent={continent} key={continent.name}/>);
     });
 

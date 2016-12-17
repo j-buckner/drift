@@ -192,6 +192,8 @@
 	      var container = document.getElementById('travel-data');
 	      var travelData = JSON.parse(container.childNodes[0].data);
 
+	      var continents = travelData['continents'];
+	      var countries = travelData['countries'];
 	      var styles = {
 	        'textAlign': 'center'
 	      };
@@ -213,7 +215,7 @@
 	            ' Where Have You Been? '
 	          )
 	        ),
-	        _react2.default.createElement(SidePanel, { continents: travelData }),
+	        _react2.default.createElement(SidePanel, { continents: continents, countries: countries }),
 	        _react2.default.createElement(Map, null)
 	      );
 	    }
@@ -267,7 +269,7 @@
 
 	      var countries = [];
 	      this.props.continent.countries.forEach(function (country) {
-	        countries.push(_react2.default.createElement(SidePanelTopRowChildren, { name: country.code, key: country.code }));
+	        countries.push(_react2.default.createElement(SidePanelTopRowChildren, { name: country['name'], key: country.code }));
 	      });
 
 	      return _react2.default.createElement(
@@ -308,7 +310,8 @@
 	    var _this6 = _possibleConstructorReturn(this, (SidePanel.__proto__ || Object.getPrototypeOf(SidePanel)).call(this, props));
 
 	    _this6.state = {
-	      continents: props.continents
+	      continents: props.continents,
+	      countries: props.countries
 	    };
 	    return _this6;
 	  }
@@ -317,18 +320,28 @@
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      $('.button-collapse').sideNav({
-	        menuWidth: '200px'
+	        menuWidth: '288px'
 	      });
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this7 = this;
+
 	      var styles = {
 	        'float': 'right'
 	      };
 
 	      var continentRows = [];
 	      this.state.continents.forEach(function (continent) {
+	        continent.countries.forEach(function (country) {
+	          // Dumb hack based on my poorly designed data model
+	          var countrySearch = _this7.state.countries.find(function (countryLookup) {
+	            return country['code'] === countryLookup['code'];
+	          });
+	          country['name'] = countrySearch['name'];
+	        });
+
 	        continentRows.push(_react2.default.createElement(SidePanelTopRow, { continent: continent, key: continent.name }));
 	      });
 
