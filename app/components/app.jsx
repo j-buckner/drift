@@ -8,9 +8,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <div className="content">
-          <Home />
-        </div>
+        <Home />
       </div>
     )
   }
@@ -40,6 +38,10 @@ class Home extends React.Component {
 }
 
 class TravelProfile extends React.Component {
+  componentDidMount() {
+    $('.collapsible').collapsible();
+    $(".button-collapse").sideNav();
+  }
   render() {
     const container = document.getElementById('travel-data');
     const travelData = JSON.parse(container.childNodes[0].data);

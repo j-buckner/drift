@@ -105,11 +105,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'content' },
-	          _react2.default.createElement(Home, null)
-	        )
+	        _react2.default.createElement(Home, null)
 	      );
 	    }
 	  }]);
@@ -187,6 +183,12 @@
 	  }
 
 	  _createClass(TravelProfile, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      $('.collapsible').collapsible();
+	      $(".button-collapse").sideNav();
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var container = document.getElementById('travel-data');
