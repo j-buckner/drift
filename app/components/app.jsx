@@ -38,10 +38,31 @@ class Home extends React.Component {
 }
 
 class TravelProfile extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      selectedCodes: [],
+    };
+
+    // Hacky bind for now
+    this.updateSelectedCodes = this.updateSelectedCodes.bind(this);
+  }
+
+  updateSelectedCodes(code, isSelected) {
+    let newSelectedCodes = this.state.selectedCodes;
+    if (isSelected && this.state.selectedCodes.indexOf(code) === -1) newSelectedCodes.push(code);
+    if (!isSelected) newSelectedCodes.splice(newSelectedCodes.indexOf(code), 1);
+    this.setState({
+      selectedCodes: newSelectedCodes
+    });
+
+  }
+
   componentDidMount() {
     $('.collapsible').collapsible();
-    $(".button-collapse").sideNav();
+    $('.button-collapse').sideNav();
   }
+
   render() {
     const container = document.getElementById('travel-data');
     const travelData = JSON.parse(container.childNodes[0].data);
@@ -58,58 +79,28 @@ class TravelProfile extends React.Component {
           <h2 style={styles}> Lets Build Your Travel Profile </h2>
           <h3 style={styles}> Where Have You Been? </h3>
         </div>
-        <SidePanel continents={continents} countries={countries}/>
-        <Map/>
+        <SidePanel continents={continents} countries={countries} selectedCodes={this.state.selectedCodes} updateSelectedCodes={this.updateSelectedCodes}/>
+        <Map selectedCodes={this.state.selectedCodes} updateSelectedCodes={this.updateSelectedCodes}/>
       </div>
     )
   }
 }
 
-class SidePanelTopRowChildren extends React.Component {
-  render() {
-    return (
-      <li><a href="#!">{this.props.name}</a></li>
-    )
-  }
-}
-
-class SidePanelTopRow extends React.Component{
-  render() {
-    let styles = {
-      'float': 'right'
-    }
-
-    var countries = [];
-    this.props.continent.countries.forEach( (country) => {
-      countries.push(<SidePanelTopRowChildren name={country['name']} key={country.code}/>);
-    });
-
-    return (
-      <li>
-        <a className="collapsible-header waves-effect">{this.props.continent.name}<i className="material-icons" style={styles}>arrow_drop_down</i></a>
-        <div className="collapsible-body">
-          <ul>
-            {countries}
-          </ul>
-        </div>
-      </li>        
-    )
-  }
-}
-
 class SidePanel extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       continents: props.continents,
       countries: props.countries
     };
   }
+
   componentDidMount() {
     $('.button-collapse').sideNav({
       menuWidth: '288px'
     });
   }
+
   render() {
     const styles = {
       'float': 'right'
@@ -123,9 +114,10 @@ class SidePanel extends React.Component {
           return country['code'] === countryLookup['code'];
         });
         country['name'] = countrySearch['name'];
+        country['isSelected'] = (this.props.selectedCodes.indexOf(country['code']) != -1);
       });
 
-      continentRows.push(<SidePanelTopRow continent={continent} key={continent.name}/>);
+      continentRows.push(<SidePanelTopRow continent={continent} key={continent.name} updateSelectedCodes={this.props.updateSelectedCodes}/>);
     });
 
     return (
@@ -143,9 +135,88 @@ class SidePanel extends React.Component {
   }
 }
 
+class SidePanelTopRow extends React.Component{
+  render() {
+    let styles = {
+      'float': 'right'
+    }
+
+    var countries = [];
+    this.props.continent.countries.forEach( (country) => {
+      countries.push(<SidePanelTopRowChildren name={country['name']} isSelected={country['isSelected']} code={country['code']} key={country['code']} updateSelectedCodes={this.props.updateSelectedCodes} />);
+    });
+
+    return (
+      <li>
+        <a className="collapsible-header waves-effect">{this.props.continent.name}<i className="material-icons" style={styles}>arrow_drop_down</i></a>
+        <div className="collapsible-body">
+          <ul>
+            {countries}
+          </ul>
+        </div>
+      </li>        
+    )
+  }
+}
+
+class SidePanelTopRowChildren extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isSelected: this.props.isSelected,
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      isSelected: nextProps.isSelected
+    });
+  }
+
+  handleChange() {
+    let newSelectedState = !this.state.isSelected
+
+    this.setState({
+      'isSelected': newSelectedState
+    });
+
+    this.props.updateSelectedCodes(this.props.code, newSelectedState);
+  }
+
+  render() {
+    let styles = {
+      'backgroundColor': this.state.isSelected ? '#D3D3D3' : '#FFFFFF'
+    }
+
+    return (
+      <li>
+        <a href="#!" onClick={this.handleChange} style={styles}>{this.props.name}</a>
+      </li>
+    )
+  }
+}
+
 class Map extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedCodes: this.props.selectedCodes,
+      map: null
+    };
+    this.markSelected = this.markSelected.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      selectedCodes: nextProps.selectedCodes
+    });
+    this.markSelected();
+  }
+  
   componentDidMount() {
-    AmCharts.makeChart( "mapdiv", {
+    let map = AmCharts.makeChart( "mapdiv", {
       "type": "map",
       "preventDragOut": true,
       "dragMap": true,
@@ -169,7 +240,41 @@ class Map extends React.Component {
         "panControlEnabled": false 
       }
     });
+
+    this.setState({'map': map});
+    this.markSelected();
+    map.addListener("clickMapObject", function(e){this.handleMapClick(e, map)}.bind(this));
   }
+
+  markSelected() {
+    let selectedCodes = this.state.selectedCodes;
+    if (selectedCodes.length === 0) return;
+
+    for (let i = 0; i < selectedCodes.length; i++) {
+      let area = this.state.map.getObjectById(selectedCodes[i]);
+      area.showAsSelected = true;
+      this.state.map.returnInitialColor(area);
+    }
+  }
+
+  handleMapClick(e, map) {
+    let codeClicked = e.mapObject.id;
+    let showCode = !e.mapObject.showAsSelected;
+
+    // Update map to select/deselect country
+    e.mapObject.showAsSelected = showCode;
+    map.returnInitialColor( e.mapObject );
+
+    let newSelectedCodes = this.state.selectedCodes;
+    if (showCode) newSelectedCodes.push(codeClicked);
+    if (!showCode) newSelectedCodes.splice(newSelectedCodes.indexOf(codeClicked), 1);
+    this.setState({
+      selectedCodes: newSelectedCodes
+    });
+
+    this.props.updateSelectedCodes(codeClicked, showCode);
+  }
+
   render() {
     return (
       <div>
@@ -186,5 +291,3 @@ ReactDOM.render(
   </Router>,
   document.getElementById('app')
 );
-
-
